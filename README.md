@@ -1,1 +1,1 @@
-## Japanese Anime Scoring Website
+## Game Scoring Website
