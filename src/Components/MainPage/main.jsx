@@ -16,7 +16,7 @@ class MainPage extends Component {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'user-key': '3bf50a500dd2bfee6bd301627a95107b',
+                'user-key': '3bf50a500dd2bfee6bd301627a95107b'
             },
             data: 'fields *;',
             withCredentials: true,
