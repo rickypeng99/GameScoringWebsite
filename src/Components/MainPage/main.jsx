@@ -22,9 +22,9 @@ class MainPage extends Component {
             withCredentials: true,
             crossDomain: true,
         }).then(response => {
-            for (let i = 0; i < response.data.length; i++) {
-                this.state.allGames.push(response.data[i]);
-            }
+            this.setState({
+                allGames: response.data,
+            })
             alert(response.data[0]._id);
         }).catch(err => {
             alert(err);
