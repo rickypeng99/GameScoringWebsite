@@ -19,7 +19,7 @@ class Home extends Component {
         <div>
         <AuthUserContext.Consumer>
           {authUser =>
-            authUser ? <HomeAuth /> : <HomeNonAuth history = {this.props.history}/>
+            authUser ? <HomeAuth  history = {this.props.history} currentUser = {authUser}/> : <HomeNonAuth history = {this.props.history} currentUser = {authUser}/>
           }
         </AuthUserContext.Consumer>
       </div>
@@ -28,11 +28,15 @@ class Home extends Component {
 }
 
 
-const HomeAuth = () => (
-    <div>
-        <p>Hello!</p>
-        <SignOutButton />
-    </div>
+const HomeAuth = (props) => (
+    
+        <div>
+            <p>Hello!</p>
+            <p>{props.currentUser.email}</p>
+            <SignOutButton />
+        </div>
+    
+    
     
   );
   
