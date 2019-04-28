@@ -1,0 +1,23 @@
+
+h1{
+    font-size: 50px;
+  }
+
+
+
+.ui.input{
+    
+}
+.signUpContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ui.form{
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    width: 300px;
+}

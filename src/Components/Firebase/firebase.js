@@ -1,4 +1,5 @@
 import app from 'firebase/app';
+import 'firebase/auth';
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -15,23 +16,16 @@ class Firebase {
 
     this.auth = app.auth();
 
-
-    userSignUp = ((email, password) => {
-        this.auth.createUserWithEmailAndPassword(email, password)
-        .catch((error) => {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            if (errorCode == 'auth/weak-password') {
-                alert('The password is too weak.');
-            } else if(errorCode == 'auth/invalid-email'){
-                alert('Invalid email entry, please type again!');
-            } else{
-                alert(errorMessage);
-            }
-          });
-    })
   }
+    userSignUp = (email, password) => 
+        this.auth.createUserWithEmailAndPassword(email, password);
+    userSignIn = (email, password) => 
+        this.auth.signInWithEmailAndPassword(email, password);
+    
+    userSignOut = ()=>{
+      this.auth.signOut();
+    }
+  
 }
 
 export default Firebase;
