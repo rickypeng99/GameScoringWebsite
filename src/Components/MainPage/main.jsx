@@ -1,43 +1,42 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import MainDetail from './mainDetail.jsx';
 
 class MainPage extends Component {
     constructor() {
         super();
         this.state = {
-            popularGames: [],
-            allGames: [],
+            gameList: [],
+            idList: [],
         }
     }  
     
     componentDidMount() {
-        axios({
-            url: 'https://api-v3.igdb.com/games',
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'user-key': '3bf50a500dd2bfee6bd301627a95107b'
-            },
-            data: 'fields *;',
-            withCredentials: true,
-            crossDomain: true,
-        }).then(response => {
+        axios.get('http://localhost:4000/steam/gameList')
+        .then(response => {
             this.setState({
-                allGames: response.data,
+                gameList: response.data.applist.apps.slice(43000, 43050),
             })
-            alert(response.data[0]._id);
         }).catch(err => {
             alert(err);
-        });
+        })
     }
     
     render() {
+        if (this.state.gameList.length === 0 || this.state.length === 0) {
+            return(
+                <div></div>
+            )
+        }
+        let list = this.state.gameList.map(game => {
+            return <li> Name: {game.name}, APPID: {game.appid}</li>
+        });
         return(
             <div>
-                {this.state.allGames[0]}
-            </div>    
+                {list}
+                <MainDetail gameList = {this.state.gameList} idList = {this.state.idList}/>
+            </div>
         )
     }
 }
-
 export default MainPage;
