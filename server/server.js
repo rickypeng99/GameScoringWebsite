@@ -1,15 +1,15 @@
 var express = require('express');
-var cors = require('cors');
 var app = express();
 var request = require('request');
 
+//allow cross domain
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     next();
 });
 
-// get all games in steam
+//get all games in steam
 app.get('/steam/gameList', (httpRequest, httpResponse) => {
     let url = 'http://api.steampowered.com/ISteamApps/GetAppList/v0002/?key=BB7C2025C5AF751CEF5650354B24DCC9&format=json'
     request.get(url, (error, steamResponse, steamBody) => {
