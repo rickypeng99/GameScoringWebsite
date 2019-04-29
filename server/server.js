@@ -1,6 +1,13 @@
 var express = require('express');
+var cors = require('cors');
 var app = express();
 var request = require('request');
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+});
 
 // get all games in steam
 app.get('/steam/gameList', (httpRequest, httpResponse) => {
@@ -19,7 +26,6 @@ app.get('/steam/gameInfo/:id', (httpRequest, httpResponse) => {
         httpResponse.send(steamBody);
     });
 })
-
 
 var port = 4000;
 app.listen(port)

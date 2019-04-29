@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import MainDetail from './mainDetail.jsx';
 
 class MainPage extends Component {
     constructor() {
@@ -15,7 +14,7 @@ class MainPage extends Component {
         axios.get('http://localhost:4000/steam/gameList')
         .then(response => {
             this.setState({
-                gameList: response.data.applist.apps.slice(43000, 43050),
+                gameList: response.data.applist.apps.slice(0, 200),
             })
         }).catch(err => {
             alert(err);
@@ -34,7 +33,6 @@ class MainPage extends Component {
         return(
             <div>
                 {list}
-                <MainDetail gameList = {this.state.gameList} idList = {this.state.idList}/>
             </div>
         )
     }
