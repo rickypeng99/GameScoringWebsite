@@ -77,11 +77,13 @@ class Detail extends Component {
         genres = genres.map(genre => {
             return <li>{genre.description}</li>
         })
+        var releaseDate;
         if (isReleased) {
-            var releaseDate = 'Coming Soon';
+            releaseDate = 'Coming Soon';
         } else {
-            var releaseDate = this.state.game[appid].data.release_date.date;
+            releaseDate = this.state.game[appid].data.release_date.date;
         }
+        // if brief and detail description are the same, then no need to show the show more/less link
         let linkStyle = {
             visibility: 'visible'
         }
@@ -93,14 +95,12 @@ class Detail extends Component {
         return(
             <div>
                 <div className = {imageSection}>
-                    <img className = {image} src = {imageUrl}/>
+                    <img className = {image} src = {imageUrl} alt = 'game scene'/>
                     <div className = {text}>
                         Publishers: {publishers} <br/>
                         Release Date: {releaseDate}<br/>
-                        Categories:
-                        {categories}
-                        Genres:
-                        {genres}
+                        Categories: {categories}
+                        Genres: {genres}
                     </div>
                     <div className = {score}>
                         Average Score: 8.8
