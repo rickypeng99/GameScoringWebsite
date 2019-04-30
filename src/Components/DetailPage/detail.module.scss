@@ -1,56 +1,74 @@
 .imageSection {
+    font-family: 'PT Sans Caption', sans-serif;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     font-size: 13pt;
     margin-top: 2%;
-    color: rgba(60, 60, 60, 0.8)
-}
+    color: rgba(60, 60, 60, 0.8);
+    
+    .text {
+        padding-top: 2%;
+        line-height: 1.3em;
+    }
 
-.text {
-    padding-top: 2%;
-    line-height: 1.3em;
-}
-.image {
-    max-width: 800px;
-    height: auto;
-}
-.score {
-    font-size: 15pt;
-    padding-top: 2%;
-    text-align: center;
-    font-weight: bold;
+    .image {
+        max-width: 800px;
+        height: auto;
+    }
+
+    .score {
+        font-size: 15pt;
+        padding-top: 2%;
+        text-align: center;
+        font-weight: bold;
+    }
 }
 
 .intro {
-    margin-top: 2%;
+    font-family: 'PT Sans Caption', sans-serif;
     font-size: 13pt;
     line-height: 1.2em;
+    margin-top: 2%;
+
+    .introContent {
+        margin-left: 3%;
+        margin-right: 3%;
+        font-size: 12pt;
+        line-height: 1.3em;
+        h1 {
+            font-size: 13pt;
+        }
+    
+        h2 {
+            font-size: 12pt;
+        }
+    }
+    
+    .introClick {
+        margin-left: 3%;
+        margin-right: 3%;
+        color: rgba(60, 60, 60, 0.8);
+        font-weight: bold;
+    }
+    
+    .introClick:hover {
+        text-decoration: underline
+    }
 }
 
 .introTitle {
+    font-family: 'PT Sans Caption', sans-serif;
+    margin-left: 2%;
+    margin-right: 2%;
     font-weight: bold;
     font-size: 17pt;
     line-height: 2em;
 }
 
-.introContent {
-    font-size: 12pt;
-    line-height: 1.3em;
-    h1 {
-        font-size: 13pt;
-    }
-
-    h2 {
-        font-size: 12pt;
-    }
-}
-
-.introClick {
-    color: rgba(60, 60, 60, 0.8);
-    font-weight: bold;
-}
-
-.introClick:hover {
-    text-decoration: underline
+.screenshotsCss{
+    display: block;
+    margin: 0 auto;
+    max-width: 350px;
+    height: auto;
 }

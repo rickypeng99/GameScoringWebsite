@@ -3,7 +3,9 @@ import axios from 'axios';
 import ReactHtmlParser from 'react-html-parser';
 import {Card} from 'semantic-ui-react';
 import HorizontalBar from './bar.jsx';
-import {imageSection, text, score, image, intro, introTitle, introContent, introClick} from './detail.module.scss';
+import AliceCarousel from 'react-alice-carousel';
+import "react-alice-carousel/lib/alice-carousel.css";
+import {imageSection, text, score, image, intro, introTitle, introContent, introClick, screenshotsCss} from './detail.module.scss';
 
 class Detail extends Component {
     constructor() {
@@ -14,6 +16,7 @@ class Detail extends Component {
             briefIntro: {},
             displayIntro: {},
             clickLink: 'show more',
+            currentSlide: 0, 
         }
         this.showContent = this.showContent.bind(this);
     }
@@ -58,10 +61,14 @@ class Detail extends Component {
                 <div></div>
             )
         }
-        let imageUrl = this.state.game[appid].data['header_image'];
+        let imageUrl = this.state.game[appid].data.header_image;
         let publishers = this.state.game[appid].data.publishers;
         let isReleased = this.state.game[appid].data.release_date.coming_soon;
         let categories = this.state.game[appid].data.categories;
+        let screenshots = this.state.game[appid].data.screenshots;
+        screenshots = screenshots.map(image => {
+            return <a href = {image.path_full}><img className = {screenshotsCss} src = {image.path_full} alt = 'screenshot'/></a>;
+        })
         // only select the first 3 categories if more than categories provided
         if (categories.length > 3) {                
             categories = categories.slice(0, 3);
@@ -92,6 +99,12 @@ class Detail extends Component {
                 visibility: 'none'
             }
         }
+        //responsive for carousel
+        let responsive = {
+            0: {items: 1}, 
+            512: {items: 2},
+            1024: {items: 4}
+        }
         return(
             <div>
                 <div className = {imageSection}>
@@ -118,6 +131,10 @@ class Detail extends Component {
                         <span className = {introClick} onClick = {this.showContent} style = {linkStyle}>{this.state.clickLink}</span>
                     </Card.Content>
                 </Card>
+                <h3 className = {introTitle}>Screen Shots</h3>
+                <AliceCarousel mouseDragEnabled responsive = {responsive} autoPlayInterval={5000} autoPlayDirection="ltr" autoPlay={true}>
+                    {screenshots}
+                </AliceCarousel>
             </div>
         )
     }
