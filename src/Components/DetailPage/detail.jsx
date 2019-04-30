@@ -15,8 +15,7 @@ class Detail extends Component {
             detailIntro: {},
             briefIntro: {},
             displayIntro: {},
-            clickLink: 'show more',
-            currentSlide: 0, 
+            clickLink: 'show more', 
         }
         this.showContent = this.showContent.bind(this);
     }
