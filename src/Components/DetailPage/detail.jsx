@@ -101,8 +101,9 @@ class Detail extends Component {
         }
         //responsive for carousel
         let responsive = {
-            0: {items: 1}, 
-            512: {items: 2},
+            0: {items: 1},
+            350: {items: 1},
+            700: {items: 2}, 
             1024: {items: 3}
         }
         return(

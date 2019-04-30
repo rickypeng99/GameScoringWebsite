@@ -32,8 +32,8 @@
     margin-top: 1.5%;
 
     .introContent {
-        margin-left: 8%;
-        margin-right: 8%;
+        margin-left: 6%;
+        margin-right: 6%;
         font-size: 12pt;
         line-height: 1.3em;
         h1 {
@@ -46,8 +46,8 @@
     }
     
     .introClick {
-        margin-left: 8%;
-        margin-right: 8%;
+        margin-left: 6%;
+        margin-right: 6%;
         color: rgba(60, 60, 60, 0.8);
         font-weight: bold;
     }
@@ -67,11 +67,13 @@
 }
 
 .carousel {
-   margin-right: 8%;
-   margin-left: 8%;
+   margin-right: 6%;
+   margin-left: 6%;
    
    .screenshotsCss{
-        max-width: 350px;
-        height: auto;
+       display: block;
+       margin: 0 auto;
+       max-width: 350px;
+       height: auto;
     }
 }
