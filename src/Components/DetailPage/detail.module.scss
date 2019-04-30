@@ -4,7 +4,7 @@
     justify-content: space-around;
     flex-wrap: wrap;
     font-size: 13pt;
-    margin-top: 2%;
+    margin-top: 3%;
     color: rgba(60, 60, 60, 0.8);
     
     .text {
@@ -13,7 +13,7 @@
     }
 
     .image {
-        max-width: 800px;
+        max-width: 400px;
         height: auto;
     }
 
@@ -29,11 +29,11 @@
     font-family: 'PT Sans Caption', sans-serif;
     font-size: 13pt;
     line-height: 1.2em;
-    margin-top: 2%;
+    margin-top: 1.5%;
 
     .introContent {
-        margin-left: 3%;
-        margin-right: 3%;
+        margin-left: 8%;
+        margin-right: 8%;
         font-size: 12pt;
         line-height: 1.3em;
         h1 {
@@ -46,8 +46,8 @@
     }
     
     .introClick {
-        margin-left: 3%;
-        margin-right: 3%;
+        margin-left: 8%;
+        margin-right: 8%;
         color: rgba(60, 60, 60, 0.8);
         font-weight: bold;
     }
@@ -59,16 +59,19 @@
 
 .introTitle {
     font-family: 'PT Sans Caption', sans-serif;
-    margin-left: 2%;
-    margin-right: 2%;
+    margin-left: 6%;
+    margin-right: 6%;
     font-weight: bold;
     font-size: 17pt;
     line-height: 2em;
 }
 
-.screenshotsCss{
-    display: block;
-    margin: 0 auto;
-    max-width: 350px;
-    height: auto;
+.carousel {
+   margin-right: 8%;
+   margin-left: 8%;
+   
+   .screenshotsCss{
+        max-width: 350px;
+        height: auto;
+    }
 }

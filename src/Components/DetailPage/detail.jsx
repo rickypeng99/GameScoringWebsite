@@ -5,7 +5,7 @@ import {Card} from 'semantic-ui-react';
 import HorizontalBar from './bar.jsx';
 import AliceCarousel from 'react-alice-carousel';
 import "react-alice-carousel/lib/alice-carousel.css";
-import {imageSection, text, score, image, intro, introTitle, introContent, introClick, screenshotsCss} from './detail.module.scss';
+import {imageSection, text, score, image, intro, introTitle, introContent, introClick, screenshotsCss, carousel} from './detail.module.scss';
 
 class Detail extends Component {
     constructor() {
@@ -103,7 +103,7 @@ class Detail extends Component {
         let responsive = {
             0: {items: 1}, 
             512: {items: 2},
-            1024: {items: 4}
+            1024: {items: 3}
         }
         return(
             <div>
@@ -123,7 +123,7 @@ class Detail extends Component {
                 <Card>
                     <Card.Content className = {intro}>
                         <Card.Header className = {introTitle}>
-                            Introduction:
+                            Introduction
                         </Card.Header>
                         <div className = {introContent}>
                             {this.state.displayIntro}
@@ -132,9 +132,11 @@ class Detail extends Component {
                     </Card.Content>
                 </Card>
                 <h3 className = {introTitle}>Screen Shots</h3>
+                <div className = {carousel}>
                 <AliceCarousel mouseDragEnabled responsive = {responsive} autoPlayInterval={5000} autoPlayDirection="ltr" autoPlay={true}>
                     {screenshots}
                 </AliceCarousel>
+                </div>
             </div>
         )
     }
