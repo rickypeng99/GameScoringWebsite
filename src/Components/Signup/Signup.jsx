@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Input, Label, Form, Button } from 'semantic-ui-react'
 import { withFirebase } from '../Firebase';
 import { Link, withRouter } from 'react-router-dom';
+import axios from 'axios';
 require('./Signup.css');
 
 
@@ -33,10 +34,27 @@ class Signup extends Component{
     
         this.props.firebase
           .userSignUp(email, passwordOne)
-          .then(authUser => {
+          .then(currentUser => {
             
             this.setState({ ...all_states });
+            
+            // let url = ""
+            // axios.post(url, {
+            //     id: cuurentUser.uid,
+            //     email: currentUser.email
+            // })
+            // .then((response) => {
+            //     alert("cg create " + response.email + " on database!")
+
+            // })
+            // .catch(error => {
+            //     alert(error)
+            // })
+
+
             this.props.history.push("/");
+
+
         })
           .catch(error => {
            
@@ -84,6 +102,11 @@ class Signup extends Component{
 
                 }
 
+            } else if(input === "password"){
+                if(passwordOne === ''){
+                    return <Label pointing>Please input password!</Label>
+
+                }
             } else if(input === "password2"){
                 if(passwordOne !== passwordTwo){
                     return <Label pointing>Password different!</Label>
@@ -137,6 +160,9 @@ class Signup extends Component{
                                 onChange = {this.formChangeHandler}
                                 type = "password"
                             />
+                        {
+                            showError("password1")
+                        }
                         </div>
                     </Form.Field>
                     <Form.Field>
