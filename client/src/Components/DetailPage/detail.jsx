@@ -10,6 +10,7 @@ import {imageSection, text, score, image, intro,
     introTitle, introContent, introClick, screenshotsCss, carousel, 
     comments, commentList, commentClickCss} from './detail.module.scss';
 
+
 class Detail extends Component {
     constructor() {
         super();
@@ -33,7 +34,7 @@ class Detail extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:4000/steam/gameInfo/' + 413420)
+        axios.get('http://localhost:5000/api/steam/gameInfo/' + 413420)
         .then(response => {
             let htmlContent = response.data[413420].data.detailed_description;
             let content = ReactHtmlParser(htmlContent);
@@ -217,16 +218,12 @@ class Detail extends Component {
                     </AliceCarousel>
                 </div>
                 <Card>
-                    <Card.Header className = {introTitle}>Comments</Card.Header>
-                    <Card.Content className = {commentList}>
-                        {commentLists}
-                    </Card.Content>
-                </Card>
-                <Card>
+                    <span className = {introTitle}>Comments</span>
                     <Card.Content className = {comments}>
                         <Card.Header className = {commentClickCss} onClick = {this.addComment} style = {commentClickStyle}>
                             <FontAwesomeIcon icon="comment-alt"/> Add a comment
                         </Card.Header>
+                        {commentLists}
                         <textarea name="commentBox" maxlength = '1000' onChange = {this.writeComment} 
                         value = {this.state.addComment} style = {commentBoxStyle}></textarea>
                         <Button onClick = {this.submit} style = {buttonDisplayStyle}>Submit</Button>  

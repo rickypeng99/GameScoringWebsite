@@ -11,7 +11,7 @@ class MainPage extends Component {
     }  
     
     componentDidMount() {
-        axios.get('http://localhost:4000/steam/gameList')
+        axios.get('api/steam/gameList')
         .then(response => {
             this.setState({
                 gameList: response.data.applist.apps.slice(0, 200),
