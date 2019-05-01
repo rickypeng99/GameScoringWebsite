@@ -1,0 +1,122 @@
+.imageSection {
+    font-family: 'PT Sans Caption', sans-serif;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    font-size: 13pt;
+    margin-top: 3%;
+    color: rgba(60, 60, 60, 0.8);
+    
+    .text {
+        padding-top: 2%;
+        line-height: 1.3em;
+    }
+
+    .image {
+        max-width: 400px;
+        height: auto;
+    }
+
+    .score {
+        font-size: 15pt;
+        padding-top: 2%;
+        text-align: center;
+        font-weight: bold;
+    }
+}
+
+.intro {
+    font-family: 'PT Sans Caption', sans-serif;
+    font-size: 13pt;
+    line-height: 1.2em;
+    margin-top: 1.5%;
+
+    .introContent {
+        margin-left: 6%;
+        margin-right: 6%;
+        font-size: 12pt;
+        line-height: 1.3em;
+        h1 {
+            font-size: 13pt;
+        }
+    
+        h2 {
+            font-size: 12pt;
+        }
+    }
+    
+    .introClick {
+        margin-left: 6%;
+        margin-right: 6%;
+        color: rgba(60, 60, 60, 0.8);
+        font-weight: bold;
+    }
+    
+    .introClick:hover {
+        text-decoration: underline;
+    }
+}
+
+.introTitle {
+    font-family: 'PT Sans Caption', sans-serif;
+    margin-left: 6%;
+    margin-right: 6%;
+    font-weight: bold;
+    font-size: 17pt;
+    line-height: 2em;
+}
+
+.carousel {
+   margin-right: 6%;
+   margin-left: 6%;
+   
+   .screenshotsCss{
+       display: block;
+       margin: 0 auto;
+       max-width: 350px;
+       height: auto;
+    }
+}
+
+.commentList {
+    font-family: 'PT Sans Caption', sans-serif;
+    margin: 0% 6% 1% 6%;
+    font-size: 13pt;
+    color: rgba(50, 50, 50, 0.8);
+    font-weight: bold;
+}
+.comments {
+    font-family: 'PT Sans Caption', sans-serif;
+    margin-left: 6%;
+    margin-right:20%;
+
+    .commentClickCss {
+        color: rgba(60, 60, 60, 0.8);
+        font-weight: bold;
+        font-size: 13pt;
+    }
+    
+    .commentClickCss:hover{
+        text-decoration: underline;
+    }
+
+    textarea{
+        font-family: 'PT Sans Caption', sans-serif;
+        width: 100%;
+        height: 230px;
+        padding: 12px;
+        border-radius: 25px;
+        border: 1.5px solid rgba(100, 100, 100, 0.3);
+        outline: none;
+        font-size: 13pt;
+        resize: none;
+    }
+
+    Button {
+        margin-top: 10px;
+        outline: none;
+        font-family: 'PT Sans Caption', sans-serif;
+        border-radius: 15px;
+        font-size: 12pt;
+    }
+}
