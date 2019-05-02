@@ -48,10 +48,12 @@ router.put("/comment/:game_id", (req, res) => {
     const comment = req.body.comment;
     const user_id = req.body.user_id;
     const user_name = req.body.user_name;
+    const date = req.body.date;
     let comment_object = {
         user_name: user_name,
         user_id: user_id,
-        comment: comment
+        comment: comment,
+        date: date
     }
     Game.findOneAndUpdate(
         { "game_id": game_id },
