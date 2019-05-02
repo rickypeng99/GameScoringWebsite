@@ -34,7 +34,7 @@ class Detail extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/api/steam/gameInfo/' + 413420)
+        axios.get('api/steam/gameInfo/' + 413420)
         .then(response => {
             let htmlContent = response.data[413420].data.detailed_description;
             let content = ReactHtmlParser(htmlContent);
@@ -47,6 +47,14 @@ class Detail extends Component {
             })
         }).catch(err => {
             alert(err);
+        })
+        axios.get('api/game/' + 413420)
+        .then(response => {
+            this.setState({             // !!!! need further change to map each comment to corresponding user
+                commentList: response.data.comment
+            })
+        }).catch(err => {
+            alert(err)
         })
     }
     //click show more or show less to show detail or brief content
@@ -85,6 +93,11 @@ class Detail extends Component {
     }
     //submit the comment, axios post should be added here 
     submit() {
+        axios.put('api/game/comment/' + 413420, {
+            comment: this.state.addComment,
+            user_name: "test_name",
+            user_id: "test_id",
+        })
         let commentList = this.state.comments;
         commentList.push(this.state.addComment);
         if (this.state.addComment === '') {
