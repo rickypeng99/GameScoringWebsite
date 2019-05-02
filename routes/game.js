@@ -45,7 +45,6 @@ router.get("/:game_id", (req, res) => {
  */
 router.put("/comment/:game_id", (req, res) => {
     const game_id = req.params.game_id;
-    console.log(typeof game_id)
     const comment = req.body.comment;
     const user_id = req.body.user_id;
     const user_name = req.body.user_name;
@@ -91,7 +90,7 @@ router.put("/score/:game_id", (req, res) => {
 })
 
 /**
- * put game score
+ * post game
  */
 router.post("/", (req, res) => {
     console.log(req.body)

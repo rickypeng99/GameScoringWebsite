@@ -8,11 +8,11 @@ import { faCommentAlt } from '@fortawesome/free-solid-svg-icons'
 library.add(faCommentAlt)
 
 class Detail extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             game: {},              
-            appid: 413420,
+            appid: props.match.params.game_id,
         }
     }
 

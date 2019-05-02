@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Card, Button, Label} from 'semantic-ui-react';
+import {Card, Button, List, Image} from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {commentsCss, commentClickCss, commentTitle} from './comments.module.scss'
+import {commentsCss, commentClickCss, commentTitle, commentOverall, cardCss} from './comments.module.scss'
 
 class Comments extends Component {
     constructor() {
@@ -65,6 +65,7 @@ class Comments extends Component {
     submit() {
         let commentList = this.state.comments;
         commentList.push(this.state.addComment);
+        // empty comment will raise alert
         if (this.state.addComment === '') {
             alert('Please add comments');
             return;
@@ -108,24 +109,36 @@ class Comments extends Component {
         }
         let commentLists = this.state.comments.map(currComment => {
             return (
-                <Label>{currComment.user_name}:{currComment.comment}</Label>
+                <List.Item>
+                    <Image avatar src='https://react.semantic-ui.com/images/avatar/small/daniel.jpg' />
+                    <List.Content>
+                        <List.Header>{currComment.user_name}</List.Header>
+                        <List.Description>
+                            {currComment.comment}
+                        </List.Description>
+                    </List.Content>
+                </List.Item>
             );
         })
 
         return(
-            <Card>
-                <span className = {commentTitle}>Comments</span>
-                <Card.Content className = {commentsCss}>
-                    <Card.Header className = {commentClickCss} onClick = {this.addComment} style = {commentClickStyle}>
-                        <FontAwesomeIcon icon="comment-alt"/> Add a comment
-                    </Card.Header>
-                    {commentLists}
-                    <textarea name="commentBox" maxlength = '1000' onChange = {this.writeComment} 
-                    value = {this.state.addComment} style = {commentBoxStyle}></textarea>
-                    <Button onClick = {this.submit} style = {buttonDisplayStyle}>Submit</Button>  
-                    <Button onClick = {this.cancel} style = {buttonDisplayStyle}>Cancel</Button>
-                </Card.Content>
-            </Card>
+            <div className={commentOverall}>
+                <Card className={cardCss}>
+                    <span className = {commentTitle}>Comments</span>
+                    <Card.Content className = {commentsCss}>
+                        <Card.Header className = {commentClickCss} onClick = {this.addComment} style = {commentClickStyle}>
+                            <FontAwesomeIcon icon="comment-alt"/> Add a comment
+                        </Card.Header>
+                        <textarea name="commentBox" maxlength = '1000' onChange = {this.writeComment} 
+                        value = {this.state.addComment} style = {commentBoxStyle}></textarea>
+                        <Button onClick = {this.submit} style = {buttonDisplayStyle}>Submit</Button>  
+                        <Button onClick = {this.cancel} style = {buttonDisplayStyle}>Cancel</Button>
+                        <List relaxed='very' animated>
+                            {commentLists}
+                        </List>
+                    </Card.Content>
+                </Card>
+            </div>
         )
      }
 }

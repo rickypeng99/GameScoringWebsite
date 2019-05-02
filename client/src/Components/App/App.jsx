@@ -7,8 +7,8 @@ function App() {
   return (
     <HashRouter>
       <Switch>
-        <Route exact path = '/' component = { MainPage }/>
-        <Route exact path='/detail' component={Detail} />
+        <Route exact path = '/' component = {MainPage}/>
+        <Route exact path='/detail/:game_id' component={Detail} />
       </Switch>
     </HashRouter>
   );

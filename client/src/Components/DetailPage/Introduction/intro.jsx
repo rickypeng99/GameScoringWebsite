@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import {Card} from 'semantic-ui-react';
 import HorizontalBar from './bar.jsx';
-import {imageSection, text, score, image, intro, 
+import {imageSection, text, score, image, intro, introOverall, cardCss,
     introTitle, introContent, introClick} from './intro.module.scss';
 
 
@@ -96,18 +96,20 @@ class Introduction extends Component {
                         <HorizontalBar/>
                     </div>
                 </div>
-                <Card>
-                    <Card.Content className = {intro}>
-                        <Card.Header className = {introTitle}>
-                            Introduction
-                        </Card.Header>
-                        <div className = {introContent}>
-                            {this.state.displayIntro}
-                        </div>
-                        <span className = {introClick} onClick = {this.showContent} 
-                        style = {linkStyle}>{this.state.clickLink}</span>
-                    </Card.Content>
-                </Card>
+                <div className={introOverall}>
+                    <Card className={cardCss}>
+                        <Card.Content className = {intro}>
+                            <Card.Header className = {introTitle}>
+                                Introduction
+                            </Card.Header>
+                            <div className = {introContent}>
+                                {this.state.displayIntro}
+                            </div>
+                            <span className = {introClick} onClick = {this.showContent} 
+                            style = {linkStyle}>{this.state.clickLink}</span>
+                        </Card.Content>
+                    </Card>
+                </div>
             </div>
         )
     }

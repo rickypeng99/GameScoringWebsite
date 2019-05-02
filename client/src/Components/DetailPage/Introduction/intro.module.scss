@@ -25,44 +25,54 @@
     }
 }
 
-.intro {
-    font-family: 'PT Sans Caption', sans-serif;
-    font-size: 13pt;
-    line-height: 1.2em;
-    margin-top: 1.5%;
-
-    .introContent {
-        margin-left: 6%;
-        margin-right: 6%;
-        font-size: 12pt;
-        line-height: 1.3em;
-        h1 {
-            font-size: 13pt;
-        }
+.introOverall {
     
-        h2 {
-            font-size: 12pt;
-        }
-    }
-
-    .introTitle {
+    padding: 4%;
+    
+    .cardCss {
+        width: 100%;
+        box-shadow: 13px 6px 40px -13px rgba(0,0,0,0.75);
+        .intro {
         font-family: 'PT Sans Caption', sans-serif;
-        margin-left: 6%;
-        margin-right: 6%;
-        font-weight: bold;
-        font-size: 17pt;
-        line-height: 2em;
+        font-size: 13pt;
+        line-height: 1.2em;
+        margin-top: 1.5%;
+
+        .introContent {
+            margin-left: 6%;
+            margin-right: 6%;
+            font-size: 12pt;
+            line-height: 1.3em;
+            h1 {
+                font-size: 13pt;
+            }
+        
+            h2 {
+                font-size: 12pt;
+            }
+        }
+
+        .introTitle {
+            font-family: 'PT Sans Caption', sans-serif;
+            margin-left: 6%;
+            margin-right: 6%;
+            font-weight: bold;
+            font-size: 17pt;
+            line-height: 2em;
+        }
+        
+        
+        .introClick {
+            margin-left: 6%;
+            margin-right: 6%;
+            color: rgba(60, 60, 60, 0.8);
+            font-weight: bold;
+        }
+        
+        .introClick:hover {
+            text-decoration: underline;
+        }
+    }
     }
     
-    
-    .introClick {
-        margin-left: 6%;
-        margin-right: 6%;
-        color: rgba(60, 60, 60, 0.8);
-        font-weight: bold;
-    }
-    
-    .introClick:hover {
-        text-decoration: underline;
-    }
 }
