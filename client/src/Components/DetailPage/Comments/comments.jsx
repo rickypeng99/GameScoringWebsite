@@ -31,6 +31,17 @@ class Comments extends Component {
         })
     }
 
+    componentDidUpdate() {
+        axios.get('api/game/' + this.props.appid)
+        .then(response => {
+            this.setState({          
+                comments: response.data.data.comment
+            })
+        }).catch(err => {
+            alert(err)
+        })
+    }
+
     addComment() {
         this.setState({
              commentBoxDisplay: 'block',
