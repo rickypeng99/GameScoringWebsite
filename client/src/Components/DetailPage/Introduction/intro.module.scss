@@ -1,0 +1,68 @@
+.imageSection {
+    font-family: 'PT Sans Caption', sans-serif;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    font-size: 13pt;
+    margin-top: 3%;
+    color: rgba(60, 60, 60, 0.8);
+    
+    .text {
+        padding-top: 2%;
+        line-height: 1.3em;
+    }
+
+    .image {
+        max-width: 400px;
+        height: auto;
+    }
+
+    .score {
+        font-size: 15pt;
+        padding-top: 2%;
+        text-align: center;
+        font-weight: bold;
+    }
+}
+
+.intro {
+    font-family: 'PT Sans Caption', sans-serif;
+    font-size: 13pt;
+    line-height: 1.2em;
+    margin-top: 1.5%;
+
+    .introContent {
+        margin-left: 6%;
+        margin-right: 6%;
+        font-size: 12pt;
+        line-height: 1.3em;
+        h1 {
+            font-size: 13pt;
+        }
+    
+        h2 {
+            font-size: 12pt;
+        }
+    }
+
+    .introTitle {
+        font-family: 'PT Sans Caption', sans-serif;
+        margin-left: 6%;
+        margin-right: 6%;
+        font-weight: bold;
+        font-size: 17pt;
+        line-height: 2em;
+    }
+    
+    
+    .introClick {
+        margin-left: 6%;
+        margin-right: 6%;
+        color: rgba(60, 60, 60, 0.8);
+        font-weight: bold;
+    }
+    
+    .introClick:hover {
+        text-decoration: underline;
+    }
+}

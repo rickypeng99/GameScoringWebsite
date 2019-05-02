@@ -31,7 +31,7 @@ class HorizontalBar extends Component {
     render() {
         return (
             <div>
-                <ReactApexChart options={this.state.options} series={this.state.series} type='bar' />
+                <ReactApexChart options={this.state.options} series={this.state.series} type = 'bar'/>
             </div>
         )
     }
