@@ -96,7 +96,7 @@ class Detail extends Component {
         axios.put('api/game/comment/' + 413420, {
             comment: this.state.addComment,
             user_name: "test_name",
-            user_id: "test_id",
+            user_id: "test_id"
         })
         let commentList = this.state.comments;
         commentList.push(this.state.addComment);
@@ -111,6 +111,7 @@ class Detail extends Component {
             comments: commentList,
             commentClickDisplay: 'block',
         })
+       
     }
     //cancel the comment
     cancel() {

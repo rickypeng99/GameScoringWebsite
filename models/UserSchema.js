@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 /**
  * User Schema for mongodb
  */
-User = mongoose.model("game", new Schema({
+User = mongoose.model("user", new Schema({
     name: {
         type: String,
         required: true
