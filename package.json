@@ -1,0 +1,31 @@
+{
+  "name": "cs498rk-final",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "apexcharts": "^3.6.9",
+    "axios": "^0.18.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "i": "^0.3.6",
+    "node-sass": "^4.12.0",
+    "npm": "^6.9.0",
+    "react-scripts": "3.0.0",
+    "request": "^2.88.0",
+    "semantic-ui-react": "^0.86.0",
+    "mongodb": "^3.2.3",
+    "mongoose": "^5.5.4"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "engines": {
+    "node": "10.15.0"
+  }
+}
