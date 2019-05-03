@@ -76,19 +76,77 @@ router.put("/comment/:game_id", (req, res) => {
 router.put("/score/:game_id", (req, res) => {
     const game_id = req.params.game_id;
     const score = req.body.score;
-    Game.findOneAndUpdate(
-        { "game_id": mongoose.Types.ObjectId(game_id) },
-        { "$inc": { "score": {score: 1} } },
-        { new: true },
-        (err, game) => {
-            if (err) {
-                return res.status(500).send(err)
-            }
-            return res.status(200).send({
-                message: "OK",
-                data: game
-            });
+    if (score === 'score_5') {
+        Game.findOneAndUpdate(
+            { "game_id": game_id },
+            { "$inc": { "score.score_5": 1} },
+            { new: true },
+            (err, game) => {
+                if (err) {
+                    return res.status(500).send(err)
+                }
+                return res.status(200).send({
+                    message: "OK",
+                    data: game
+                });
         });
+    } else if (score === 'score_4') {
+        Game.findOneAndUpdate(
+            { "game_id": game_id },
+            { "$inc": { "score.score_4": 1} },
+            { new: true },
+            (err, game) => {
+                if (err) {
+                    return res.status(500).send(err)
+                }
+                return res.status(200).send({
+                    message: "OK",
+                    data: game
+                });
+        });
+    } else if (score === 'score_3') {
+        Game.findOneAndUpdate(
+            { "game_id": game_id },
+            { "$inc": { "score.score_3": 1} },
+            { new: true },
+            (err, game) => {
+                if (err) {
+                    return res.status(500).send(err)
+                }
+                return res.status(200).send({
+                    message: "OK",
+                    data: game
+                });
+        });
+    } else if (score === 'score_2') {
+        Game.findOneAndUpdate(
+            { "game_id": game_id },
+            { "$inc": { "score.score_2": 1} },
+            { new: true },
+            (err, game) => {
+                if (err) {
+                    return res.status(500).send(err)
+                }
+                return res.status(200).send({
+                    message: "OK",
+                    data: game
+                });
+        });
+    } else if (score === 'score_1') {
+        Game.findOneAndUpdate(
+            { "game_id": game_id },
+            { "$inc": { "score.score_1": 1} },
+            { new: true },
+            (err, game) => {
+                if (err) {
+                    return res.status(500).send(err)
+                }
+                return res.status(200).send({
+                    message: "OK",
+                    data: game
+                });
+        });
+    }
 })
 
 /**

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import {Card} from 'semantic-ui-react';
-import HorizontalBar from './bar.jsx';
+import HorizontalBar from './Bar/bar.jsx';
 import {imageSection, text, score, image, intro, introOverall, cardCss,
     introTitle, introContent, introClick} from './intro.module.scss';
 
@@ -15,6 +15,7 @@ class Introduction extends Component {
             briefIntro: '',                                     //brief intro of a game
             displayIntro: '',                                   //display detail or bried intro, depending on show more or less link, by default is brief intro of a game
             clickLink: 'show more',                             //whether to show detail description or brief description
+            appid: '',
         }
         this.showContent = this.showContent.bind(this);         //click handler of show more/less link
     }
@@ -28,6 +29,7 @@ class Introduction extends Component {
             detailIntro: content,
             briefIntro: shortContent, 
             displayIntro: shortContent,
+            appid: this.props.appid,
         })
     }
 
@@ -80,7 +82,9 @@ class Introduction extends Component {
                 display: 'none'
             }
         }
-
+        if (this.state.appid === '') {
+            return <div></div>
+        }
         return(
             <div>
                 <div className = {imageSection}>
@@ -92,8 +96,7 @@ class Introduction extends Component {
                         Genres: {genres}
                     </div>
                     <div className = {score}>
-                        Average Score: 8.8
-                        <HorizontalBar/>
+                        <HorizontalBar appid = {this.state.appid}/>
                     </div>
                 </div>
                 <div className={introOverall}>

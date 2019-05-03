@@ -3,6 +3,7 @@ import axios from 'axios';
 import Introduction from './Introduction/intro.jsx';
 import Screenshots from './Screenshots/screenshots.jsx';
 import Comments from './Comments/comments.jsx';
+import Rating from './Rating/rating.jsx';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCommentAlt } from '@fortawesome/free-solid-svg-icons'
 library.add(faCommentAlt)
@@ -37,6 +38,7 @@ class Detail extends Component {
             <div>
                <Introduction game = {this.state.game} appid = {this.state.appid}/>
                 <Screenshots game = {this.state.game} appid = {this.state.appid}/>
+                <Rating appid = {this.state.appid}/>
                 <Comments appid = {this.state.appid}/>
             </div>
         )
