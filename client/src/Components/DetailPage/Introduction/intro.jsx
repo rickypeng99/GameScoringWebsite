@@ -62,18 +62,12 @@ class Introduction extends Component {
         categories = categories.map(category => {
             return <li>{category.description}</li>
         })
-        if(genres){
-            if (genres.length > 3) {
-                genres = genres.slice(0, 3);
-            }
-            genres = genres.map(genre => {
-                return <li>{genre.description}</li>
-            })
-        } else{
-            genres = "Undefined"
+        if (genres.length > 3) {
+            genres = genres.slice(0, 3);
         }
-       
-        
+        genres = genres.map(genre => {
+            return <li>{genre.description}</li>
+        })
         var releaseDate;
         if (isReleased) {
             releaseDate = 'Coming Soon';
@@ -102,22 +96,24 @@ class Introduction extends Component {
                         Categories: {categories}
                         Genres: {genres}
                     </div>
-                    {/* <div className = {score}>
+                    <div className = {score}>
                         <HorizontalBar appid = {this.state.appid}/>
-                    </div> */}
+                    </div>
                 </div>
-                <Card>
-                    <Card.Content className = {intro}>
-                        <Card.Header className = {introTitle}>
-                            Introduction
-                        </Card.Header>
-                        <div className = {introContent}>
-                            {this.state.displayIntro}
-                        </div>
-                        <span className = {introClick} onClick = {this.showContent} 
-                        style = {linkStyle}>{this.state.clickLink}</span>
-                    </Card.Content>
-                </Card>
+                <div className={introOverall}>
+                    <Card className={cardCss}>
+                        <Card.Content className = {intro}>
+                            <Card.Header className = {introTitle}>
+                                Introduction
+                            </Card.Header>
+                            <div className = {introContent}>
+                                {this.state.displayIntro}
+                            </div>
+                            <span className = {introClick} onClick = {this.showContent} 
+                            style = {linkStyle}>{this.state.clickLink}</span>
+                        </Card.Content>
+                    </Card>
+                </div>
             </div>
         )
     }

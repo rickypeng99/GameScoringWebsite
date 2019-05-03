@@ -30,4 +30,7 @@ router.get('/gamenews/:id', (httpRequest, httpResponse) => {
     })
 })
 
+
+
+
 module.exports = router;
