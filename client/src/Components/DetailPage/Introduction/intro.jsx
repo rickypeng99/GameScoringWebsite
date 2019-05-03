@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import {Card} from 'semantic-ui-react';
-import HorizontalBar from './bar.jsx';
+import HorizontalBar from './Bar/bar.jsx';
 import {imageSection, text, score, image, intro, 
     introTitle, introContent, introClick} from './intro.module.scss';
-
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCommentAlt } from '@fortawesome/free-solid-svg-icons'
+library.add(faCommentAlt)
 
 class Introduction extends Component {
     constructor() {
@@ -15,6 +17,7 @@ class Introduction extends Component {
             briefIntro: '',                                     //brief intro of a game
             displayIntro: '',                                   //display detail or bried intro, depending on show more or less link, by default is brief intro of a game
             clickLink: 'show more',                             //whether to show detail description or brief description
+            appid: '',
         }
         this.showContent = this.showContent.bind(this);         //click handler of show more/less link
     }
@@ -28,6 +31,7 @@ class Introduction extends Component {
             detailIntro: content,
             briefIntro: shortContent, 
             displayIntro: shortContent,
+            appid: this.props.appid,
         })
     }
 
@@ -81,6 +85,10 @@ class Introduction extends Component {
             }
         }
 
+        if (this.state.appid === '') {
+            return <div></div>
+        }
+
         return(
             <div>
                 <div className = {imageSection}>
@@ -92,7 +100,6 @@ class Introduction extends Component {
                         Genres: {genres}
                     </div>
                     <div className = {score}>
-                        Average Score: 8.8
                         <HorizontalBar/>
                     </div>
                 </div>

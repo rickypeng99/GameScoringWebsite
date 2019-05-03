@@ -113,19 +113,19 @@ class Comments extends Component {
         })
 
         return(
-            <Card>
-                <span className = {commentTitle}>Comments</span>
-                <Card.Content className = {commentsCss}>
-                    <Card.Header className = {commentClickCss} onClick = {this.addComment} style = {commentClickStyle}>
+            <div>
+                <h3 className = {commentTitle}>Comments</h3>
+                <div className = {commentsCss}>
+                    <h3 className = {commentClickCss} onClick = {this.addComment} style = {commentClickStyle}>
                         <FontAwesomeIcon icon="comment-alt"/> Add a comment
-                    </Card.Header>
+                    </h3>
                     {commentLists}
                     <textarea name="commentBox" maxlength = '1000' onChange = {this.writeComment} 
                     value = {this.state.addComment} style = {commentBoxStyle}></textarea>
                     <Button onClick = {this.submit} style = {buttonDisplayStyle}>Submit</Button>  
                     <Button onClick = {this.cancel} style = {buttonDisplayStyle}>Cancel</Button>
-                </Card.Content>
-            </Card>
+                </div>
+            </div>
         )
      }
 }
