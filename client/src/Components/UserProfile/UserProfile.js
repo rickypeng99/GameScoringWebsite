@@ -53,7 +53,7 @@ class UserProfile extends Component {
     axios.get('api/user/' + this.props.match.params.user_id)
     .then(response => {
         this.setState({
-            comments: (response.data.data.comment)
+            comments: (response.data.data.comment.reverse())
         })
     })
   }

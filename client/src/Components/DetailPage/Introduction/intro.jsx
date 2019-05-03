@@ -62,12 +62,18 @@ class Introduction extends Component {
         categories = categories.map(category => {
             return <li>{category.description}</li>
         })
-        if (genres.length > 3) {
-            genres = genres.slice(0, 3);
+        if(genres){
+            if (genres.length > 3) {
+                genres = genres.slice(0, 3);
+            }
+            genres = genres.map(genre => {
+                return <li>{genre.description}</li>
+            })
+        } else{
+            genres = "Undefined"
         }
-        genres = genres.map(genre => {
-            return <li>{genre.description}</li>
-        })
+       
+        
         var releaseDate;
         if (isReleased) {
             releaseDate = 'Coming Soon';
