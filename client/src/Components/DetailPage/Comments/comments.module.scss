@@ -2,7 +2,12 @@
 .commentOverall {
     padding: 4%;
     
-    
+    .cardCssRating{
+        width: 100%;
+        box-shadow: 13px 6px 40px -13px rgba(0,0,0,0.75);
+        display: flex;
+        justify-content: space-around;
+    }
     .cardCss {
         width: 100%;
         box-shadow: 13px 6px 40px -13px rgba(0,0,0,0.75);

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {Card, Button, List, Image} from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {commentsCss, commentClickCss, commentTitle, commentOverall, cardCss, cardCssLoginLabel, comment_item, commentUser} from './comments.module.scss'
+import {commentsCss, commentClickCss, commentTitle, commentOverall, cardCss, cardCssLoginLabel, comment_item, commentUser, cardCssRating} from './comments.module.scss'
+import {score, imageSection} from '../Introduction/intro.module.scss'
+import HorizontalBar from '../Introduction/Bar/bar'
 import Rating from '../Rating/rating';
 
 //For log in
@@ -264,9 +266,12 @@ class Comments extends Component {
                     {this.state.loginLabel}
 
                 </Card>
-                <Card className={cardCss}>
+                <div className={imageSection}>
                     <Rating appid = {this.props.appid}/>
-                </Card>
+                    <div className = {score}>
+                        <HorizontalBar appid = {this.props.appid}/>
+                    </div>
+                </div>
                 <Card className={cardCss}>
                     <span className = {commentTitle}>Comments</span>
                     <span className = {commentUser}>{commentName()}</span>

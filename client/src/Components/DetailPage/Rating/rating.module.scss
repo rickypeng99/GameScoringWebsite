@@ -10,8 +10,16 @@
     margin-top: 2%;
     margin-bottom: 2%;
     font-size: 25pt;
-
+    width: 100%;
     .Button {
         padding-right: 5px;
     }
+}
+.innerContent{
+    display:flex;
+    flex-direction: column;
+}
+
+#tip{
+    font-size: 10pt;
 }

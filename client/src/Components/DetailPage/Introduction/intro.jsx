@@ -102,9 +102,9 @@ class Introduction extends Component {
                         Categories: {categories}
                         Genres: {genres}
                     </div>
-                    <div className = {score}>
+                    {/* <div className = {score}>
                         <HorizontalBar appid = {this.state.appid}/>
-                    </div>
+                    </div> */}
                 </div>
                 <div className={introOverall}>
                     <Card className={cardCss}>
