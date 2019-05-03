@@ -28,21 +28,21 @@ class Signup extends Component{
         this.props.firebase
           .userSignUp(email, passwordOne)
           .then(currentUser => {            
-            let url = "http://localhost:5000/api/user"
-            // alert(currentUser.user.uid)
+            let url = "/api/user"
+            alert(currentUser.user.uid)
             // alert(currentUser.uid + " "+typeof(currentUser.uid))
-            // axios.post(url, {
-            //     "uid" : currentUser.user.uid,
-            //     "email": email,
-            //     "name": username
-            // })
-            // .then((response) => {
-            //     alert("cg create " + response.data.email + " on database!")
+            axios.post(url, {
+                "uid" : currentUser.user.uid,
+                "email": email,
+                "name": username
+            })
+            .then((response) => {
+                alert("success create " + response.data.username + " on database!")
 
-            // })
-            // .catch(error => {
-            //     alert("post: " + error)
-            // })
+            })
+            .catch(error => {
+                alert("post: " + error)
+            })
 
 
             this.props.history.push("/");

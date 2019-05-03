@@ -62,12 +62,18 @@ class Introduction extends Component {
         categories = categories.map(category => {
             return <li>{category.description}</li>
         })
-        if (genres.length > 3) {
-            genres = genres.slice(0, 3);
+        if(genres){
+            if (genres.length > 3) {
+                genres = genres.slice(0, 3);
+            }
+            genres = genres.map(genre => {
+                return <li>{genre.description}</li>
+            })
+        } else{
+            genres = "Undefined"
         }
-        genres = genres.map(genre => {
-            return <li>{genre.description}</li>
-        })
+       
+        
         var releaseDate;
         if (isReleased) {
             releaseDate = 'Coming Soon';
@@ -85,6 +91,7 @@ class Introduction extends Component {
         if (this.state.appid === '') {
             return <div></div>
         }
+
         return(
             <div>
                 <div className = {imageSection}>
@@ -95,9 +102,9 @@ class Introduction extends Component {
                         Categories: {categories}
                         Genres: {genres}
                     </div>
-                    <div className = {score}>
-                        <HorizontalBar/>
-                    </div>
+                    {/* <div className = {score}>
+                        <HorizontalBar appid = {this.state.appid}/>
+                    </div> */}
                 </div>
                 <Card>
                     <Card.Content className = {intro}>

@@ -2,11 +2,25 @@
 .commentOverall {
     padding: 4%;
     
-    
+    .cardCssRating{
+        width: 100%;
+        box-shadow: 13px 6px 40px -13px rgba(0,0,0,0.75);
+        display: flex;
+        justify-content: space-around;
+    }
     .cardCss {
         width: 100%;
         box-shadow: 13px 6px 40px -13px rgba(0,0,0,0.75);
         .commentTitle {
+            margin-top: 2%;
+            font-family: 'PT Sans Caption', sans-serif;
+            margin-left: 6%;
+            margin-right: 6%;
+            font-weight: bold;
+            font-size: 17pt;
+            line-height: 2em;
+        }
+        .commentUser {
             font-family: 'PT Sans Caption', sans-serif;
             margin-left: 6%;
             margin-right: 6%;
@@ -17,7 +31,7 @@
         .commentsCss {
             margin-left: 6%;
             margin-right:20%;
-            
+            margin-bottom: 2%;
             .commentClickCss, textarea, Button{
                 font-family: 'PT Sans Caption', sans-serif;
             }
@@ -26,6 +40,7 @@
                 color: rgba(60, 60, 60, 0.8);
                 font-weight: bold;
                 font-size: 13pt;
+                cursor: pointer;
             }
             
             .commentClickCss:hover{
@@ -56,6 +71,11 @@
         width: 100%;
         box-shadow: 13px 6px 40px -13px rgba(0,0,0,0.75);
         text-align: center;
+        padding-top: 2%;
+        padding-bottom: 1%;
+    }
+    .comment_item{
+        cursor: pointer;
     }
 }
 

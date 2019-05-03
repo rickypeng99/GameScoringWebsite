@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {Button} from 'semantic-ui-react'
 import StarRatingComponent from 'react-star-rating-component';
-import {ratingCss, ratingTitle} from './rating.module.scss';
+import {ratingCss, ratingTitle, innerContent, tip} from './rating.module.scss';
 
 class Rating extends Component {
     constructor() {
@@ -47,18 +47,23 @@ class Rating extends Component {
         return (                
           <div>
             <div className = {ratingCss}>
-            <h3 className = {ratingTitle}>Rating the game</h3>
-                <StarRatingComponent 
-                name="editable rating" 
-                starCount={5}
-                emptyStarColor={'rgba(100, 100, 100, 0.5)'}
-                value={this.state.rating}
-                onStarClick={this.clickStar}
-                editing = {true}
-                />
-                <Button  style = {style} onClick = {this.submitRating}>Submit</Button>
-                <Button style = {style} onClick = {this.cancelRating}>Cancel</Button>
-            </div>
+            <h3 className = {ratingTitle}>Rating</h3>
+                
+                <div className = {innerContent}>
+                    <StarRatingComponent 
+                    name="editable rating" 
+                    starCount={5}
+                    emptyStarColor={'rgba(100, 100, 100, 0.5)'}
+                    value={this.state.rating}
+                    onStarClick={this.clickStar}
+                    editing = {true}
+                    />
+                    <p id = {tip}>Click to rate!</p>
+                    <Button  style = {style} onClick = {this.submitRating}>Submit</Button>
+                    <Button style = {style} onClick = {this.cancelRating}>Cancel</Button>
+                </div>
+                </div>
+                
           </div>
         );
     }

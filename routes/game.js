@@ -49,11 +49,14 @@ router.put("/comment/:game_id", (req, res) => {
     const user_id = req.body.user_id;
     const user_name = req.body.user_name;
     const date = req.body.date;
+    const game_name = req.body.game_name;
     let comment_object = {
         user_name: user_name,
         user_id: user_id,
         comment: comment,
-        date: date
+        date: date,
+        game_name: game_name,
+        game_id: game_id
     }
     Game.findOneAndUpdate(
         { "game_id": game_id },
@@ -159,5 +162,40 @@ router.post("/", (req, res) => {
     res.status(201).send(comment)
 
 })
+
+
+/**
+ * get comment from a specific user
+ */
+router.get("/comment/:user_id", (req, res) => {
+    const user_id = req.params.user_id;
+
+    Game.aggregate([
+        {$match: {'comment.user_id': user_id}},
+        {$project: {
+            comment: {$filter: {
+                input: '$comment',
+                as: 'single',
+                cond: {$eq: ['$$single.user_id', user_id]}
+            }},
+            _id: 0,
+            
+        }}
+    ])
+    .exec()
+    .then(response => {
+        res.status(200).send({
+            message: "OK",
+            data: response
+        });
+    })
+    .catch(error => {
+        res.status(500).send({
+            message: "fuck you",
+            data: error
+        });
+    })
+})
+
 
 module.exports = router;

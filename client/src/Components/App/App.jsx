@@ -5,6 +5,8 @@ import Detail from '../DetailPage/detail.jsx';
 import { withAuthentication } from '../withAuth';
 import Signup from '../Signup/Signup'
 import Signin from '../Signin/Signin'
+import UserProfile from '../UserProfile/UserProfile.js';
+
 function App() {
   return (
     <HashRouter>
@@ -12,6 +14,7 @@ function App() {
         <Route exact path = '/' component = {MainPage}/>
         <Route exact path='/detail/:game_id' component={Detail} />
         <Route exact path='/signup' component = {Signup}/>
+        <Route exact path='/account/:user_id' component = {UserProfile}/>
       </Switch>
     </HashRouter>
   );
