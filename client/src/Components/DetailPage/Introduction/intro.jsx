@@ -96,23 +96,21 @@ class Introduction extends Component {
                         Genres: {genres}
                     </div>
                     <div className = {score}>
-                        <HorizontalBar appid = {this.state.appid}/>
+                        <HorizontalBar/>
                     </div>
                 </div>
-                <div className={introOverall}>
-                    <Card className={cardCss}>
-                        <Card.Content className = {intro}>
-                            <Card.Header className = {introTitle}>
-                                Introduction
-                            </Card.Header>
-                            <div className = {introContent}>
-                                {this.state.displayIntro}
-                            </div>
-                            <span className = {introClick} onClick = {this.showContent} 
-                            style = {linkStyle}>{this.state.clickLink}</span>
-                        </Card.Content>
-                    </Card>
-                </div>
+                <Card>
+                    <Card.Content className = {intro}>
+                        <Card.Header className = {introTitle}>
+                            Introduction
+                        </Card.Header>
+                        <div className = {introContent}>
+                            {this.state.displayIntro}
+                        </div>
+                        <span className = {introClick} onClick = {this.showContent} 
+                        style = {linkStyle}>{this.state.clickLink}</span>
+                    </Card.Content>
+                </Card>
             </div>
         )
     }
