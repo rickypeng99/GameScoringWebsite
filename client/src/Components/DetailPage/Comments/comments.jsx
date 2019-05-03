@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {Card, Button, List, Image} from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {commentsCss, commentClickCss, commentTitle, commentOverall, cardCss, cardCssLoginLabel, comment_item} from './comments.module.scss'
+import {commentsCss, commentClickCss, commentTitle, commentOverall, cardCss, cardCssLoginLabel, comment_item, commentUser} from './comments.module.scss'
 import Rating from '../Rating/rating';
 
 //For log in
@@ -269,7 +269,7 @@ class Comments extends Component {
                 </Card>
                 <Card className={cardCss}>
                     <span className = {commentTitle}>Comments</span>
-                    <span className = {commentTitle}>{commentName()}</span>
+                    <span className = {commentUser}>{commentName()}</span>
                     <Card.Content className = {commentsCss}>
                         <Card.Header className = {commentClickCss} onClick = {this.addComment} style = {commentClickStyle}>
                             <FontAwesomeIcon icon="comment-alt"/> Add a comment
