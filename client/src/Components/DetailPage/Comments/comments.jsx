@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {Card, Button, List, Image} from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {commentsCss, commentClickCss, commentTitle, commentOverall, cardCss, cardCssLoginLabel} from './comments.module.scss'
+import {commentsCss, commentClickCss, commentTitle, commentOverall, cardCss, cardCssLoginLabel, comment_item} from './comments.module.scss'
+import Rating from '../Rating/rating';
 
 //For log in
 import { getCurrentUserContext } from '../../withAuth';
@@ -15,14 +16,15 @@ class Comments extends Component {
     constructor() {
         super();
         this.state = {            
-            comments: [],                                       //all comments and corresponding users of the game
+            comments: "undefined",                                       //all comments and corresponding users of the game
             addComment: '',                                     //the comment added by user
             commentClickDisplay: 'block',                       //add comment link, not visible when a comment box appears
             commentBoxDisplay: 'none',                          //comment box, visible when add comment link is clicked
             buttonDisplay: 'none',                              //submit and cancel button, visible when add comment link is clicked
             loginLabel: <p>Loading login status....</p>,
             email: 'undefined',
-            id: 'undefined' 
+            id: 'undefined',
+            username: 'undefined',
         }
         this.addComment = this.addComment.bind(this);           //click to add a comment box
         this.writeComment = this.writeComment.bind(this);       //input change handler of the comment box
@@ -59,6 +61,18 @@ class Comments extends Component {
                         this.setState({
                             email: JSON.parse(localStorage.getItem('currentUser')).email,
                             id: JSON.parse(localStorage.getItem('currentUser')).uid
+                        })
+                        //get username
+                        axios.get('api/user/' + currentUser.uid)
+                        .then(response => {
+                            
+                            this.setState({         
+                                username: response.data.data.name,
+                                
+                            })
+                        
+                        }).catch(err => {
+                            alert(err)
                         })
                       return(
                         <div>
@@ -125,7 +139,11 @@ class Comments extends Component {
 
     //submit the comment, axios post should be added here 
     submit() {
-        let commentList = this.state.comments;
+        let commentList = []
+        if(this.state.comments != "undefined"){
+            commentList = this.state.comments;
+
+        }
         commentList.push(this.state.addComment);
         //check loged in or not
         if (this.state.email == "undefined" || this.state.id == "undefined"){
@@ -153,11 +171,21 @@ class Comments extends Component {
              comments: commentList,
              commentClickDisplay: 'block',
          })
+         //add comment to game
         axios.put('api/game/comment/' + this.props.appid, {
             comment: this.state.addComment,
-            user_name: this.state.email,
+            user_name: this.state.username,
             user_id: this.state.id,
-            date: currentDate
+            date: currentDate,
+            game_name: this.props.name
+        })
+        //bind comment to user
+        axios.put('api/user/comment/' + this.props.appid, {
+            comment: this.state.addComment,
+            user_name: this.state.username,
+            user_id: this.state.id,
+            date: currentDate,
+            game_name: this.props.name
         })
      }
 
@@ -171,6 +199,10 @@ class Comments extends Component {
          })
      }
 
+     //click comment to the user
+     transfer_user(user_id){
+         this.props.history.push("/account/" + user_id);
+     }
      render() {
         //Add a comment is invisible when a comment box is visible
         let commentClickStyle = {
@@ -184,36 +216,45 @@ class Comments extends Component {
         let buttonDisplayStyle = {
             display: this.state.buttonDisplay
         }
-        let commentLists = this.state.comments.map((currComment) => {
 
-            var currDate = () => {
-                if(currComment.date){
-                    return currComment.date;
-                } else{
-                    return "Unknown date"
+        let commentLists = <p>Be the very first one to comment! </p>;
+
+        if(this.state.comments == "undefined"){
+            commentLists = <p>Loading...</p>;
+        } else if(this.state.comments.length > 0){
+            commentLists = this.state.comments.map((currComment) => {
+
+                var currDate = () => {
+                    if(currComment.date){
+                        return currComment.date;
+                    } else{
+                        return "Unknown date"
+                    }
                 }
-            }
+    
+                return (
+                    <List.Item className = {comment_item} onClick = {() => this.transfer_user(currComment.user_id)}>
+                        <Image avatar src='https://react.semantic-ui.com/images/avatar/small/daniel.jpg' />
+                        <List.Content>
+                            <List.Header>{currComment.user_name }</List.Header>
+                            <p>{" Commented on " + currDate()}</p>
+                            <List.Description>
+                                {currComment.comment}
+                            </List.Description>
+                        </List.Content>
+                    </List.Item>
+                );
+            })
+        }
 
-            return (
-                <List.Item>
-                    <Image avatar src='https://react.semantic-ui.com/images/avatar/small/daniel.jpg' />
-                    <List.Content>
-                        <List.Header>{currComment.user_name + " Sent on " + currDate()}</List.Header>
-                        <List.Description>
-                            {currComment.comment}
-                        </List.Description>
-                    </List.Content>
-                </List.Item>
-            );
-        })
 
-        let commentInvalid = this.state.email == "undefined"
+        let commentInvalid = this.state.username == "undefined"
 
         let commentName = ()=>{
             if(commentInvalid){
                 return "Please log in to comment"
             } else{
-                return "You are commenting as " + this.state.email;
+                return "You are commenting as " + this.state.username;
             }
         }
 
@@ -222,6 +263,9 @@ class Comments extends Component {
                 <Card className={cardCssLoginLabel}>
                     {this.state.loginLabel}
 
+                </Card>
+                <Card className={cardCss}>
+                    <Rating appid = {this.props.appid}/>
                 </Card>
                 <Card className={cardCss}>
                     <span className = {commentTitle}>Comments</span>

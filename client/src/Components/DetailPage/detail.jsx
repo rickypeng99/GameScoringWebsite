@@ -14,6 +14,7 @@ class Detail extends Component {
         this.state = {
             game: {},              
             appid: props.match.params.game_id,
+            name: ""
         }
     }
 
@@ -23,8 +24,12 @@ class Detail extends Component {
             this.setState({
                 game: response.data,
             })
+
+            this.setState({
+                name: response.data[this.state.appid].data.name
+            })
         }).catch(err => {
-            alert(err);
+            //alert(err);
         })
     }
 
@@ -36,11 +41,11 @@ class Detail extends Component {
         }
         return(
             <div>
-               <Introduction game = {this.state.game} appid = {this.state.appid}/>
-                <Screenshots game = {this.state.game} appid = {this.state.appid}/>
-                <Rating appid = {this.state.appid}/>
-                <Comments appid = {this.state.appid}/>
-            </div>
+                <h1>{this.state.name}</h1>
+                    <Introduction game = {this.state.game} appid = {this.state.appid} name = {this.state.name}/>
+                    <Screenshots game = {this.state.game} appid = {this.state.appid} name = {this.state.name}/>
+                    <Comments appid = {this.state.appid} name = {this.state.name}/>
+                </div>
         )
     }
 }

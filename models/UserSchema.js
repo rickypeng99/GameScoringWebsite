@@ -13,7 +13,15 @@ User = mongoose.model("user", new Schema({
     email: {
         type: String,
         required: true
-    }
+    },
+    uid: {
+        type: String,
+        required: true
+    },
+    comment: {
+        type: Array,
+        default: []
+    },
 }));
 
 module.exports = User;

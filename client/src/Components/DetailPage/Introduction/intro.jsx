@@ -85,6 +85,7 @@ class Introduction extends Component {
         if (this.state.appid === '') {
             return <div></div>
         }
+
         return(
             <div>
                 <div className = {imageSection}>

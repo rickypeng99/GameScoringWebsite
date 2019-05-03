@@ -47,10 +47,20 @@ class HorizontalBar extends Component {
                 number += scorelist[i];
                 sum += scorelist[i] * (5-i);
             }
-            average = sum/number;
+            if(number == 0){
+                average = 0.0
+            } else{
+                average = sum/number;
+
+            }
             let percentage = [];
             for (let i = 0; i < 5; i++) {
-                percentage.push((scorelist[i]/number*100).toString());
+                if(scorelist[i] / number == 0){
+                    percentage.push('0');
+                } else{
+                    percentage.push((scorelist[i]/number*100).toString());
+
+                }
             }
             this.setState({
                 series:[
@@ -79,10 +89,20 @@ class HorizontalBar extends Component {
                 number += scorelist[i];
                 sum += scorelist[i] * (5-i);
             }
-            average = sum/number;
+            if(number == 0){
+                average = 0.0
+            } else{
+                average = sum/number;
+
+            }
             let percentage = [];
             for (let i = 0; i < 5; i++) {
-                percentage.push((scorelist[i]/number*100).toString());
+                if(scorelist[i] / number == 0){
+                    percentage.push('0');
+                } else{
+                    percentage.push((scorelist[i]/number*100).toString());
+
+                }
             }
             this.setState({
                 series:[

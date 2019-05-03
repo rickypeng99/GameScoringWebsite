@@ -26,6 +26,7 @@
                 color: rgba(60, 60, 60, 0.8);
                 font-weight: bold;
                 font-size: 13pt;
+                cursor: pointer;
             }
             
             .commentClickCss:hover{
@@ -56,6 +57,9 @@
         width: 100%;
         box-shadow: 13px 6px 40px -13px rgba(0,0,0,0.75);
         text-align: center;
+    }
+    .comment_item{
+        cursor: pointer;
     }
 }
 
