@@ -1,0 +1,15 @@
+
+h1{
+    font-size: 50px;
+  }
+
+
+
+
+.signInContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
