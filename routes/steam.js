@@ -21,4 +21,13 @@ router.get('/gameInfo/:id', (httpRequest, httpResponse) => {
     });
 })
 
+//get game news with given id
+router.get('/gamenews/:id', (httpRequest, httpResponse) => {
+    let url = ' http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002/?appid=' + httpRequest.params.id + '&count=10&maxlength=300&format=json';
+    request.get(url, (error, steamResponse, steamBody) => {
+        httpResponse.setHeader('Content-Type', 'application/json');
+        httpResponse.send(steamBody);
+    })
+})
+
 module.exports = router;
