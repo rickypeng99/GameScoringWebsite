@@ -23,32 +23,39 @@ class Detail extends Component {
     componentDidMount() {
         axios.get('api/steam/gameInfo/' + this.state.appid)
         .then(response => {
+            
+            
+            
             this.setState({
                 game: response.data,
+                name: response.data[this.state.appid].data.name
+
             })
 
-            this.setState({
-                name: response.data[this.state.appid].data.name
-            })
+           
         }).catch(err => {
             //alert(err);
         })
     }
 
     render() {
-        if (this.state.game[this.state.appid] === undefined) {
+        if (this.state.game[this.state.appid] == null) {
             return(
-                <div></div>
+                <div>
+                    <p>No correspoding data for this appid, this is either due to the fact that this is not a game (might be a dlc or ost...etc.) or there isn't any thing with an app-id like this.</p>
+                </div>
+            )
+        } else{
+            return(
+                <div>
+                    <h1 className = {centerText}>{this.state.name}</h1>
+                        <Introduction game = {this.state.game} appid = {this.state.appid} name = {this.state.name}/>
+                        <Screenshots game = {this.state.game} appid = {this.state.appid} name = {this.state.name}/>
+                        <Comments appid = {this.state.appid} name = {this.state.name}/>
+                    </div>
             )
         }
-        return(
-            <div>
-                <h1 className = {centerText}>{this.state.name}</h1>
-                    <Introduction game = {this.state.game} appid = {this.state.appid} name = {this.state.name}/>
-                    <Screenshots game = {this.state.game} appid = {this.state.appid} name = {this.state.name}/>
-                    <Comments appid = {this.state.appid} name = {this.state.name}/>
-                </div>
-        )
+        
     }
 }
 
